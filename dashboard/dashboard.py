@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
- 
-orders_complete_df = pd.read_csv('orders_complete.csv') #import csv to df
+from pathlib import Path
+
+orders_complete_csv = Path(__file__).parents[1] / 'dashboard/orders_complete.csv' 
+orders_complete_df = pd.read_csv(orders_complete_csv) #import csv to df
 
 def create_most_cities_order_df(df):
     most_cities_orders_df = df.groupby('customer_city').agg({
